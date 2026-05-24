@@ -1,0 +1,20 @@
+ztk/
+├── boot/
+│   ├── boot.zppos      // Bootloader (bin/asm)
+│   └── linker.ld       // Linker script
+├── kernel/
+│   ├── kernel.zppos    // Main kernel
+│   ├── memory.zppos    // Memory management
+│   ├── interrupts.zppos // IDT/ISR handlers
+│   └── syscall.zppos   // System calls
+├── drivers/
+│   ├── vga.zppos       // VGA driver
+│   ├── keyboard.zppos  // PS/2 keyboard
+│   ├── serial.zppos    // Serial debug
+│   └── pci.zppos       // PCI scanner
+├── gui/
+│   └── desktop.zppos   // Zui+ desktop
+├── packages/
+│   ├── math.p          // Custom math package
+│   └── utils.p         // Utilities
+└── build.sh            // Build script

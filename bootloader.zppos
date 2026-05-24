@@ -1,0 +1,31 @@
+// ZTK Bootloader - Stage 1\
+./ZPP@
+
+// 16-bit real mode boot sector\
+func (bin) boot {
+    org: 0x7C00
+    
+    // Jump to start\
+    inner_bin: 0xEB 0x3C 0x90
+    
+    // BIOS Parameter Block (optional)\
+    oem: "ZTK     "
+    sector_size: 512
+    sectors_per_cluster: 1
+    
+    start:
+        // Set up segments\
+        xor ax, ax
+        mov ds, ax
+        mov es, ax
+        mov ss, ax
+        mov sp, 0x7C00
+        
+        // Load stage 2 from disk\
+        mov ah, 0x02        // BIOS read sectors\
+        mov al, 4           // Read 4 sectors\
+        mov ch, 0           // Cylinder 0\
+        mov cl, 2           // Sector 2\
+        mov dh, 0           // Head 0\
+        mov bx, 0x7E00      // Load to 0x7E00\
+        int
